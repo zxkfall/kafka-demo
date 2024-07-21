@@ -1,3 +1,17 @@
 spring:
   application:
     name: kafka-demo
+  kafka:
+    bootstrap-servers: http://localhost:29092  # 使用 Docker Compose 中的 Kafka 服务名
+    consumer:
+      group-id: my-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      properties:
+#        schema.registry.url: http://localhost:8081  # 使用 Docker Compose 中的 Schema Registry 服务名
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      properties:
+#        schema.registry.url: http://localhost:8081  # 使用 Docker Compose 中的 Schema Registry 服务名
